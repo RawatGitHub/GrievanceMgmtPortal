@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty Details</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_facultyHeader.ejs") %>
+    <section class="admin-all-g-container">
+      <%- include("partials/_facultySidebar.ejs") %>
+      <div class="all-g-side-2">
+        <h1 class="allGrievanceHeading">Faculty Details</h1>
+        <div class="single-g-container">
+          <div>
+            <span>Name: </span>
+            <span><%= singleFaculty.name %> </span>
+          </div>
+          <div>
+            <span>Email </span>
+            <span><%= singleFaculty.email %> </span>
+          </div>
+          <div>
+            <span>Grievance Category: </span>
+            <span><%= singleFaculty.grievanceCat.grievanceCat %> </span>
+          </div>
+
+          <div>
+            <span>Added On: </span>
+            <span><%= singleFaculty.addedOn.toString().substr(4,11) %> </span>
+          </div>
+          <div>
+            <p>Change Category:</p>
+            <form class="assign-form" method="post">
+              <select
+                name="facultySelect"
+                id="faculty-select"
+                onchange="changeFacultyGrievanceCategory(this.value)"
+              >
+                <option value="">Choose Category</option>
+                <% allCats.forEach((cat)=>{ %> <% if(cat._id.toString() ==
+                singleFaculty.grievanceCat._id.toString()){ %>
+                <option value="<%= cat._id %>" selected>
+                  <%= cat.grievanceCat %>
+                </option>
+                <% } else { %>
+                <option value="<%= cat._id %>"><%= cat.grievanceCat %></option>
+                <% }}) %>
+              </select>
+              <input
+                type="hidden"
+                class="facultyId"
+                value="<%= singleFaculty._id %>"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <%- include("partials/_footer.ejs") %>
+</html>

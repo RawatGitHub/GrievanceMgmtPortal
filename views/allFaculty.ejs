@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Faculty</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_facultyHeader.ejs") %>
+    <section class="all-faculty-container">
+      <%- include("partials/_facultySidebar.ejs") %>
+      <div class="all-g-side-2">
+        <div class="faculty-add-link-box">
+          <h1 class="allGrievanceHeading">All Faculty</h1>
+          <a href="addFaculty">Add Faculty</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th width="3%" scope="col">Sno</th>
+              <th width="15%" scope="col">Name</th>
+              <th width="15%" scope="col">Email</th>
+              <th width="20%" scope="col">Grievance Category</th>
+              <th width="15%" scope="col">Added On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% let i =1; allFaculty.forEach((faculty)=>{ %>
+            <tr>
+              <td class="sr-td">
+                <a href="editfaculty/<%= faculty._id %>"><%= i %> </a>
+              </td>
+              <td><%= faculty.name %></td>
+              <td><%= faculty.email %></td>
+              <td><%= faculty.grievanceCat.grievanceCat %></td>
+              <td><%= faculty.addedOn.toString().substr(4,11) %></td>
+            </tr>
+            <% i++ }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+</html>

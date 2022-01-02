@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Grievance Category</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_facultyHeader.ejs") %>
+
+    <section class="add-cat-sec">
+      <%- include("partials/_facultySidebar.ejs") %>
+      <div class="add-cat-side-2">
+        <h1 class="add-cat-heading">Add new Grievance Category</h1>
+        <form class="add-cat-form" method="post">
+          <div>
+            <input
+              type="text"
+              placeholder="Enter Grievance Category"
+              name="grievanceCat"
+              required
+            />
+          </div>
+          <input type="submit" value="Add Category" class="addGcat" />
+        </form>
+        <div class="err-b">
+          <% if(typeof error !== "undefined") { %><span
+            class="red validation-err"
+            ><%= msg %> </span
+          ><% } %>
+        </div>
+        <div class="scc-b">
+          <% if(typeof success !== "undefined") { %><span
+            class="req-id cat-add-msg"
+            ><%= msg %> </span
+          ><% } %>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

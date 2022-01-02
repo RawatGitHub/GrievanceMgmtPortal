@@ -1,0 +1,22 @@
+<header class="header">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <a href="/student/dashboard"><img src="/img/logo2.png" alt="logo" /></a>
+      </div>
+      <nav class="nav">
+        <ul>
+          <% if( typeof student === "undefined"){ %>
+          <li><a href="/">Home</a></li>
+          <li><a href="/student/login">Login</a></li>
+          <li class="home-register">
+            <a href="/student/register">Register</a>
+          </li>
+          <% } else { %>
+          <li class="stu-name"><%= student.name %></li>
+          <% }%>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

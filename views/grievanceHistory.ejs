@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grievance History</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_header.ejs") %>
+     <div>
+      <section class="gHistory-sec">
+        <%- include("partials/_studentSidebar.ejs") %>
+        <div class="student-grievances">
+          <h1 class="gHistoryHeading">Grievance History</h1>
+          <% for(let i=0; i<studentGrievances.length; i++) { %> 
+              <div class="student-card">
+                <h1 class="grievance_cat"><%= studentGrievances[i].grievanceCatId.grievanceCat %> <span class="refno-span">Reference no.<em> <%= studentGrievances[i]._id %></em></span> </h1>
+                <p class="grievance_sub"><span>Subject </span><%= studentGrievances[i].grievanceSubId.grievanceSubject %> </p>
+                <p class="student-grievance"><%= studentGrievances[i].grievance %> </p>
+                <% if(typeof studentGrievances[i].forwardedOn !== "undefined") {
+                   %> 
+                  <p class="grievance-history-assigned">Assigned to <%= studentGrievances[i].facultyId.name %>  On <%= studentGrievances[i].forwardedOn.toString().substr(4,11) %> </p>
+                  <% } %> 
+
+              <div> <p><%= studentGrievances[i].status.toUpperCase() %> </p>
+                <p><%= studentGrievances[i].addedOn.toString().substr(0,15) %> </p></div>
+              </div>
+            <% } %>       
+        </div>
+      </section>
+  </div>
+    <%- include("partials/_footer.ejs") %>
+
+  </body>
+</html>

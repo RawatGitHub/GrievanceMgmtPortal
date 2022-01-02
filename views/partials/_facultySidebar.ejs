@@ -1,0 +1,48 @@
+<section class="student-sec1">
+  <div class="sidebar">
+    <ul>
+      <% if(faculty.role === "faculty") { %>
+      <li class="active">
+        <a href="/faculty/"><i class="fas fa-folder-open"></i>My Grievance</a>
+      </li>
+      <% } %> <% if(faculty.role === "admin") { %>
+      <li class="active">
+        <a href="/faculty/"><i class="fas fa-plus-circle"></i>Overview</a>
+      </li>
+      <li>
+        <a href="/faculty/allGrievances"
+          ><i class="fas fa-digital-tachograph"></i>All Grievance</a
+        >
+      </li>
+      <li>
+        <a href="/faculty/allFaculty"><i class="fas fa-user"></i>All Faculty</a>
+      </li>
+
+      <li>
+        <a href="/faculty/addGrievanceCategory"
+          ><i class="fas fa-plus-circle"></i>Add Grievance Category</a
+        >
+      </li>
+      <li>
+        <a href="/faculty/addGrievanceSubject"
+          ><i class="fas fa-plus-circle"></i>Add Grievance Subject</a
+        >
+      </li>
+      <% } %>
+      <li>
+        <a href="/faculty/resolvedGrievance"
+          ><i class="fas fa-check-circle"></i>Resolved Grievances</a
+        >
+      </li>
+      <li>
+        <a href="/faculty/pendingGrievance"
+          ><i class="fas fa-recycle"></i>Pending Grievances</a
+        >
+      </li>
+
+      <li>
+        <a href="/faculty/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
+      </li>
+    </ul>
+  </div>
+</section>

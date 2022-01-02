@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Grievance</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_facultyHeader.ejs") %>
+    <section class="admin-all-g-container">
+      <%- include("partials/_facultySidebar.ejs") %>
+      <div class="all-g-side-2">
+        <h1 class="allGrievanceHeading">Grievance Details</h1>
+        <div class="single-g-container">
+          <div>
+            <span>Name: </span>
+            <span><%= singleGrievance.studentId.name %> </span>
+          </div>
+          <div>
+            <span>Email: </span>
+            <span><%= singleGrievance.studentId.email %> </span>
+          </div>
+          <div>
+            <span>Grievance Category: </span>
+            <span><%= singleGrievance.grievanceCatId.grievanceCat %> </span>
+          </div>
+          <div>
+            <span>Grievance Subject: </span>
+            <span><%= singleGrievance.grievanceSubId.grievanceSubject %> </span>
+          </div>
+          <div>
+            <span>Grievance: </span>
+            <span><%= singleGrievance.grievance %> </span>
+          </div>
+          <div>
+            <span>Status: </span>
+            <span><%= singleGrievance.status %> </span>
+          </div>
+          <div>
+            <span>Submitted On: </span>
+            <span><%= singleGrievance.addedOn.toString().substr(4,11) %> </span>
+          </div>
+          <div>
+            <span>Forwarded On: </span>
+            <% if(singleGrievance.forwardedOn != undefined) { %>
+            <span
+              ><%= singleGrievance.forwardedOn.toString().substr(4,11) %>
+              <em class="assignedEM">
+                (Assigned to <%= singleGrievance.facultyId.name %>)</em
+              >
+            </span>
+            <% } else { %> <em><%= "Yet to forward" %></em> <% } %>
+          </div>
+          <% if(faculty.role === "admin") { %> <% if(singleGrievance.status !==
+          "resolved"){ %>
+          <div>
+            <p>Assign Faculty:</p>
+            <form class="assign-form" method="post">
+              <select
+                name="facultySelect"
+                id="faculty-select"
+                onchange="updateFacultyORstatus(this.value, 'faculty')"
+              >
+                <option value="">Assign Faculty</option>
+                <% allFaculty.forEach((fac)=>{ %> <% if(typeof
+                singleGrievance.facultyId !== "undefined"){
+                if(fac._id.toString() ==
+                singleGrievance.facultyId._id.toString()){ %>
+                <option value="<%= fac._id %>" selected><%= fac.name %></option>
+                <% } else { %>
+                <option value="<%= fac._id %>"><%= fac.name %></option>
+                <% }} else{ %>
+                <option value="<%= fac._id %>"><%= fac.name %></option>
+
+                <% }}) %>
+              </select>
+            </form>
+          </div>
+          <% }} %> <% if(singleGrievance.status !== "resolved"){ %>
+          <div>
+            <p>Reply &amp; Status:</p>
+
+            <form class="status-form" method="post">
+              <textarea
+                name="grievanceReply"
+                id="grievanceReply"
+                cols="30"
+                rows="6"
+                class="grievanceReply"
+                placeholder="Reply Here"
+              ></textarea>
+              <select
+                name="grievanceStatus"
+                id="status-select"
+                onchange="updateFacultyORstatus(this.value, 'status')"
+              >
+                <option value="">Select Status</option>
+                <option value="pending">Pending</option>
+                <option value="processing">Processing</option>
+                <option value="resolved">Resolved</option>
+              </select>
+              <span class="red e-field"></span>
+              <input
+                type="hidden"
+                class="grievanceId"
+                value="<%= singleGrievance._id %>"
+              />
+              <input
+                type="hidden"
+                class="studentEmail"
+                value="<%= singleGrievance.studentId.email %>"
+              />
+            </form>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </section>
+  </body>
+  <%- include("partials/_footer.ejs") %>
+</html>

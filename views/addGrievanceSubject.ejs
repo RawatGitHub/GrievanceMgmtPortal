@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Grievance Subject</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_facultyHeader.ejs") %>
+
+    <section class="add-cat-sec">
+      <%- include("partials/_facultySidebar.ejs") %>
+      <div class="add-cat-side-2">
+        <h1 class="add-cat-heading">Add new Grievance Subject</h1>
+        <form class="add-sub-form" method="post">
+          <div>
+            <select name="grievanceCat" required>
+              <option value="">Select Grievance Category</option>
+                <% for(let i=0; i<allCategory.length; i++){ %> 
+                  <option value="<%= allCategory[i]._id %>"><%= allCategory[i].grievanceCat %> </option>
+                  <% } %> 
+            </select>
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Enter Grievance Subject"
+              name="grievanceSubject"
+              required
+            />
+          </div>
+          <input type="submit" value="Add Subject" />
+        </form>
+        <div class="err-b">
+          <% if(typeof error !== "undefined") { %><span
+            class="red validation-err"
+            ><%= msg %> </span
+          ><% } %>
+        </div>
+        <div class="scc-b">
+          <% if(typeof success !== "undefined") { %><span
+            class="req-id cat-add-msg"
+            ><%= msg %> </span
+          ><% } %>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

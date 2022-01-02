@@ -1,0 +1,915 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "sans-serif";
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+span.red {
+  font-size: 13px;
+  color: red;
+}
+header {
+  display: flex;
+  border-bottom: 1px solid rgb(201, 195, 195);
+  align-items: center;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  height: 12vh;
+}
+.df {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar {
+  display: flex;
+}
+.logo {
+  flex: 1;
+}
+
+.nav {
+  flex: 1;
+}
+.nav ul {
+  height: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.nav ul li {
+  margin: 1rem;
+}
+.nav ul li a {
+  color: rgb(43, 16, 70);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+}
+
+.nav ul li:not(.nav ul li:last-child) a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0%;
+  width: 0;
+  height: 2px;
+  background-color: rgb(43, 16, 70);
+  transition: all 0.4s ease-in-out;
+}
+.stu-name {
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.nav ul li a:hover:before {
+  width: 100%;
+}
+
+.home-register a {
+  background-color: rgb(43, 16, 70);
+  color: white !important;
+  border-radius: 0.2rem;
+  border: 1px solid rgb(43, 16, 70);
+  padding: 0.5rem 1.3rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav ul li:last-child a:hover {
+  background-color: white;
+  color: rgb(43, 16, 70) !important;
+}
+
+.logo img {
+  height: 3rem;
+  width: 8rem;
+}
+
+.main {
+  margin: 0.8rem 1rem;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
+
+
+
+.main .heading-container h1 {
+  font-size: 3rem;
+  color: rgb(2, 3, 61);
+  font-weight: 900;
+  margin-bottom: 2rem;
+}
+
+.main .heading-container p {
+  color: rgb(2, 3, 61);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+
+.btns a:first-child {
+  background-color: rgb(2, 3, 61);
+  color: white;
+  font-weight: bold;
+  padding: 1.1rem 2rem;
+  border-radius: 3px;
+  margin-right: 1rem;
+}
+
+.btns a:first-child:hover {
+  background-color: rgb(24, 25, 88);
+}
+
+.btns a:last-child {
+  color: rgb(2, 3, 61);
+  background-color: white;
+
+  font-weight: bold;
+  padding: 1.1rem 2rem;
+  border-radius: 3px;
+  border: 1px solid rgb(43, 16, 70);
+}
+.btns a:last-child:hover {
+  background-color: rgb(247, 247, 247);
+}
+
+/* registration form */
+
+.form-container {
+  width: 100%;
+  height: calc(100vh - 12vh);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container form {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: 80vh;
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form {
+  height: 60vh !important;
+  width: 30vw !important;
+}
+
+.form-container form div {
+  height: 7vh;
+  margin: 1.2rem 0 0 0;
+  width: 80%;
+}
+
+.form-container form div span {
+  /* display: block; */
+  font-weight: 500;
+}
+
+.registerHeading {
+  margin-top: -1rem;
+  color: rgb(114, 74, 155);
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(114, 74, 155);
+}
+
+.form-container form input {
+  height: 100%;
+  padding: 0.4rem;
+  font-weight: 600;
+  outline: none;
+  width: 100%;
+}
+
+.green {
+  color: #55efc4;
+  background-color: #00b894;
+}
+.err-b {
+  height: 29px !important;
+  margin: 3px !important;
+}
+
+.validation-err {
+  font-weight: 500;
+  height: 100%;
+  align-self: flex-start;
+}
+
+.submitbtn {
+  cursor: pointer;
+  width: 80%;
+  display: block;
+  padding: 0.8rem 1rem;
+  color: white;
+  background-color: rgb(43, 16, 70);
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0 1rem 1rem 1rem;
+  outline: none;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+
+.submitbtn:hover {
+  color: white;
+  background-color: rgb(16, 3, 29);
+}
+
+/* student dashboard */
+
+.student-main {
+  display: flex;
+}
+
+.student-sec1 {
+  min-height: 88vh;
+}
+
+.sidebar {
+  width: 14.2rem;
+  height: 100%;
+  background-color: rgb(245, 245, 245);
+}
+
+.sidebar ul li {
+  cursor: pointer;
+}
+.active {
+  background-color: rgb(237, 237, 255);
+}
+
+.sidebar ul li:hover {
+  background-color: rgb(237, 237, 255);
+}
+.sidebar ul li a {
+  color: #2b1046;
+  font-size: 0.9rem;
+  display: block;
+  padding: 1rem;
+  /* margin-left: 0.5rem; */
+  height: 100%;
+  width: 100%;
+  font-weight: 500;
+}
+
+.sidebar ul li a i {
+  margin-right: 0.7rem;
+}
+
+.student-sc2 {
+  width: 100%;
+}
+
+.grievanceHeading {
+  margin: 1.4rem 0 0.4rem 1rem;
+  display: inline-block;
+}
+
+.req-id {
+  background-color: rgb(180, 248, 180);
+  color: rgb(1, 49, 1);
+  width: 73%;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 500;
+  margin-left: 1.5rem;
+}
+.top + hr {
+  margin-left: 1rem;
+  width: 12rem;
+}
+
+.grievance-form {
+  padding: 1rem;
+}
+
+.grievance-form > .student-details {
+  display: grid;
+  width: 95%;
+  column-gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 1.1rem;
+}
+
+.grievance-form > .student-details input {
+  padding: 0.7rem;
+  margin: 0.5rem 0;
+  cursor: not-allowed;
+}
+.selects {
+  display: flex;
+  width: 100%;
+  display: flex;
+}
+
+.selects div {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.selects div select {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  width: 90%;
+  outline: none;
+}
+.selects div select option {
+  margin: 1rem 0;
+  height: 1rem;
+  font-size: 1rem;
+}
+
+#query-box {
+  font-size: 1rem;
+  font-weight: 500;
+  width: 95%;
+  outline: none;
+  padding: 0.35rem;
+  height: 9rem;
+}
+
+.griev-btn {
+  width: 95%;
+  color: white;
+  outline: none;
+  border: none;
+  font-size: 1.3rem;
+  background-color: rgb(24, 25, 88);
+  cursor: pointer;
+  /* margin: 1rem 0 0 0; */
+  border-radius: 4px;
+  padding: 1.1rem;
+}
+
+.griev-btn:hover {
+  background-color: rgb(16, 3, 29);
+}
+
+/* status page/ */
+
+.gStatus {
+  margin: 1.1rem 1.4rem;
+  color: rgb(2, 3, 61);
+}
+
+.student-status {
+  width: 100%;
+}
+.statusForm {
+  display: grid;
+  padding: 1rem 1.4rem;
+  grid-template-columns: 2fr 1fr;
+  width: 95%;
+}
+
+.statusForm input[type="text"] {
+  padding: 0.6rem 1rem;
+  outline: none;
+  font-size: 1.01rem;
+  border-radius: none;
+  font-weight: 500;
+}
+
+.statusForm input[type="submit"] {
+  color: white;
+  background-color: rgb(43, 16, 70);
+  font-size: 1.1rem;
+  font-weight: 500;
+  /* border-radius: 4px; */
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.statusForm input[type="submit"]:hover {
+  background-color: rgb(2, 3, 61);
+}
+/* myProfile */
+
+.myProfileHeading {
+  margin: 1.1rem 1rem;
+  color: rgb(16, 3, 29);
+}
+
+.profilePageForm {
+  width: 95%;
+  margin-top: 1.3rem;
+}
+.student-myProfile {
+  width: 100%;
+}
+
+.profilePageForm .student-details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: 1rem;
+  gap: 1.1rem;
+}
+
+.profilePageForm .student-details input {
+  padding: 0.6rem 1rem;
+}
+
+/* grievance history */
+.gHistory-sec {
+  display: flex;
+}
+
+.student-grievances {
+  width: 100%;
+  margin: 1rem 1.1rem;
+}
+.refno-span {
+  font-size: 0.8rem;
+  font-weight: 400 !important;
+}
+.student-card {
+  width: 100%;
+  border: 1px solid rgb(184, 183, 183);
+  padding: 0.4rem 1rem;
+  margin-top: 1.2rem;
+}
+
+.student-card span {
+  font-weight: 600;
+}
+.student-card div {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.student-grievance {
+  margin-bottom: 0.6rem;
+  color: rgb(70, 70, 70);
+}
+.grievance_cat {
+  color: rgb(39, 39, 39);
+  font-size: 1.4rem;
+}
+
+.grievance_sub {
+  margin: 0.6rem 0;
+}
+
+.grievance-history-assigned {
+  color: gray;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.status_box {
+  margin: 0 1.2rem;
+}
+.msg_box {
+  color: red;
+}
+
+/* admin */
+
+/* dashboard */
+
+.admin-side-2 {
+  width: 100%;
+}
+
+.overviewHeading {
+  margin: 1rem 1rem 0 1rem;
+}
+
+.summary-cards {
+  display: grid;
+  padding: 1.2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.1rem;
+}
+
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  padding: 0.6rem 1.4rem;
+  padding-bottom: 0.88rem;
+  box-sizing: border-box;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 2px 16px 91px -1px rgba(209, 209, 209, 1);
+  -webkit-box-shadow: 2px 16px 91px -1px rgba(209, 209, 209, 1);
+  -moz-box-shadow: 2px 16px 91px -1px rgba(209, 209, 209, 1);
+}
+
+.summary-card span {
+  font-size: 3.1rem;
+  font-weight: 300;
+}
+
+.card1 {
+  background-color: #00a8ff;
+}
+
+.card2 {
+  background-color: #009432;
+}
+
+.card3 {
+  background-color: #fbc531;
+}
+
+.card4 {
+  background-color: #8e44ad;
+}
+
+.summary-card p {
+  font-size: 0.89rem;
+  font-weight: 500;
+}
+
+.admin-all-g-container {
+  display: flex;
+}
+
+.griv-by-type-container {
+  margin: 0rem 1rem;
+  /* height: auto; */
+}
+
+.griv-by-type-container h3 {
+  border-bottom: 1px solid gray;
+  display: inline;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.cat-types-cards {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.cat-types-cards > a {
+  color: white;
+}
+.no-g-found {
+  margin: 0.2rem 1.8rem;
+}
+.cat-types-cards > a div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.3rem;
+  border-radius: 4px;
+}
+
+.cat-types-cards > a div span {
+  font-size: 2.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.cat-card1 {
+  background-color: #9980fa;
+}
+
+.cat-card2 {
+  background-color: #b53471;
+}
+
+.cat-card3 {
+  background-color: #006266;
+}
+
+.cat-card4 {
+  background-color: #2c2c54;
+}
+
+.cat-card5 {
+  background-color: #3c40c6;
+}
+
+.cat-card6 {
+  background-color: #ee5253;
+}
+
+.cat-card7 {
+  background-color: #1289a7;
+}
+
+.cat-card8 {
+  background-color: #f6b93b;
+}
+
+/* all grievabnces */
+
+.all-g-side-2 {
+  width: 100%;
+}
+
+.allGrievanceHeading {
+  margin: 1rem 1.8rem;
+}
+
+table {
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+  padding: 0;
+  border-collapse: collapse;
+  font-weight: 500;
+}
+
+table tr {
+  /* border: 1px solid #ddd; */
+  padding: 0.35em;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+}
+
+.sr-td a {
+  height: 1.2rem;
+  display: inline-block;
+  width: 1.2rem;
+  color: white;
+  padding: 0.2rem;
+  border-radius: 100%;
+  background-color: #1b1464;
+}
+
+.sr-td a:hover {
+  /* color: #1b1464; */
+  background-color: #5d56a5;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+table thead {
+  margin-bottom: 1.2rem !important;
+}
+
+table tbody tr:nth-child(odd) {
+  background-color: #d1e8f5;
+}
+
+table tbody {
+  padding: 0.7rem;
+}
+
+/* single grievance */
+
+.single-g-container {
+  margin: 1.3rem;
+  font-size: 0.9rem;
+  border: 1px solid gray;
+}
+.single-g-container > div {
+  padding: 0.8rem;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  border-bottom: 1px solid gray;
+}
+
+.single-g-container > div span:first-child,
+p:first-child {
+  font-weight: 600;
+}
+
+.single-g-container > div:last-child {
+  border-bottom: none;
+}
+
+#faculty-select,
+#status-select {
+  padding: 0.3rem 0.4rem;
+  font-size: 0.9rem;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+}
+#status-select {
+  margin-top: 0.6rem;
+}
+.status-form {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.status-form span.red {
+  margin-top: 0.2rem;
+}
+
+.grievanceReply {
+  outline: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.3rem;
+}
+
+/* add g cat */
+.add-cat-sec {
+  display: flex;
+}
+.add-cat-heading {
+  margin: 1rem 1.2rem;
+}
+#faculty-select option {
+  font-size: 0.9rem;
+}
+
+em.assignedEM {
+  font-size: 0.7rem;
+}
+
+.add-cat-side-2 {
+  width: 100%;
+}
+.add-cat-side-2 .add-cat-form {
+  padding: 1.2rem;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 2fr 1fr;
+}
+
+.add-cat-form input[type="text"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  width: 100%;
+}
+.add-cat-form input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: none;
+  color: white;
+  font-size: 1rem;
+  background-color: #0984e3;
+  font-weight: 500;
+}
+.add-cat-form input[type="submit"]:hover {
+  background-color: #0f62a1;
+}
+
+.cat-add-msg {
+  width: 30%;
+  margin-left: 1rem;
+}
+
+/* add subject  */
+.add-sub-form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1.1rem;
+  /* grid-auto-rows: 100%; */
+  gap: 1.2rem;
+}
+
+.add-sub-form select,
+input {
+  width: 100%;
+  padding: 1rem;
+  outline: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.addGcat {
+  padding: 0 !important  ;
+}
+
+.add-sub-form input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: none;
+  color: white;
+  font-size: 1rem;
+  background-color: #0984e3;
+  font-weight: 500;
+  grid-row-end: 3;
+  grid-column-start: span 2;
+  width: 100%;
+}
+
+.add-sub-form input[type="submit"]:hover {
+  background-color: #05528d;
+}
+
+.resolved-g-sec {
+  display: flex;
+}
+
+.no-resolve {
+  margin: 0.3rem 1.8rem;
+}
+
+/* all faculty page */
+.all-faculty-container {
+  display: flex;
+}
+
+.faculty-add-link-box {
+  display: flex;
+  align-items: center;
+}
+.faculty-add-link-box a {
+  text-decoration: underline;
+}
+
+.addFacultyHeading {
+  margin: 0.7rem 1.1rem;
+}
+
+.add-fac-sec {
+  display: flex;
+}
+.add-fac-container {
+  width: 100%;
+}
+
+.facultyForm {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0.5rem 1.1rem;
+  gap: 1.2rem;
+}
+
+#faculty-form-select {
+  padding: 1rem;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  color: gray;
+}
+.facultyForm input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: none;
+  color: white;
+  font-size: 1rem;
+  background-color: #0984e3;
+  font-weight: 500;
+  grid-column: 1/3;
+  width: 100%;
+}
+
+.assignBtn {
+  margin-top: 0.6rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-size: 1rem;
+  background-color: #0984e3;
+  font-weight: 500;
+}
+
+.assignBtn:hover {
+  background-color: #0e66aa;
+}
+
+/* phones */
+@media (max-width: 600px) {
+}

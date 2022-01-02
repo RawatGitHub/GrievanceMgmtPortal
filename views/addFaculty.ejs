@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Faculty</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_facultyHeader.ejs") %>
+    <section class="add-fac-sec">
+      <%- include("partials/_facultySidebar.ejs") %>
+      <div class="add-fac-container">
+        <h1 class="addFacultyHeading">Add Faculty</h1>
+        <form method="post" class="facultyForm">
+          <div>
+            <input type="text" name="name" placeholder="Faculty Name" />
+          </div>
+          <div>
+            <input type="email" name="email" placeholder="Faculty Email" />
+          </div>
+          <div>
+            <input
+              type="password"
+              name="password"
+              placeholder="Faculty Password"
+            />
+          </div>
+          <div>
+            <select name="grievanceCat" id="faculty-form-select">
+              <option value="">Select Grievance Category</option>
+              <% grievanceCat.forEach((cat)=>{ %>
+              <option value="<%= cat._id %>"><%= cat.grievanceCat %></option>
+              <% }) %>
+            </select>
+          </div>
+          <input type="submit" value="Add Faculty" />
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

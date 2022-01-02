@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resolved Grievance</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_facultyHeader.ejs") %>
+    <section class="resolved-g-sec">
+      <%- include('partials/_facultySidebar.ejs') %>
+      <div class="all-g-side-2">
+        <h1 class="allGrievanceHeading">Resolved Grievance</h1>
+        <% if(resolvedGrievance.length > 0) { %>
+        <table>
+          <thead>
+            <tr>
+              <th width="3%" scope="col">Sno</th>
+              <th width="6%" scope="col">Student</th>
+              <th width="6%" scope="col">Category</th>
+              <th width="8%" scope="col">Subject</th>
+              <th width="32%" scope="col">Grievance</th>
+              <th width="4%" scope="col">Status</th>
+              <th width="6%" scope="col">Date</th>
+              <th width="6%" scope="col">Faculty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% let i =1; resolvedGrievance.forEach((griv)=>{ %>
+            <tr>
+              <td class="sr-td">
+                <a href="grievance/<%= griv._id %>"><%= i %> </a>
+              </td>
+              <td><%= griv.studentId.name %></td>
+              <td><%= griv.grievanceCatId.grievanceCat %></td>
+              <td><%= griv.grievanceSubId.grievanceSubject %></td>
+              <td><%= griv.grievance %></td>
+              <td><%= griv.status %></td>
+              <td><%= griv.addedOn.toString().substr(4,11) %></td>
+              <td>
+                <% if(griv.facultyId) { %> <%= griv.facultyId.name %> <% } else{
+                %> <%= "Not Assigned" %> <% } %>
+              </td>
+            </tr>
+            <% i++ }) %>
+          </tbody>
+        </table>
+        <% }else { %>
+        <p class="no-resolve">No resolved grievance found yet</p>
+        <% } %>
+      </div>
+    </section>
+  </body>
+</html>

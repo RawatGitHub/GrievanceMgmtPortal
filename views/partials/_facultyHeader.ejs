@@ -1,0 +1,16 @@
+<header class="header">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <a href="/faculty/"><img src="/img/logo2.png" alt="logo" /></a>
+      </div>
+      <nav class="nav">
+        <ul>
+          <% if( typeof faculty != "undefined") { %>
+          <li class="stu-name"><%= faculty.name %></li>
+          <% } %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

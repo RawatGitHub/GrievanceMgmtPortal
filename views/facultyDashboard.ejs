@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faculty Dashboard</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_facultyHeader.ejs") %>
+
+    <div class="student-main">
+      <%- include('partials/_facultySidebar.ejs') %>
+      <div class="admin-side-2">
+        <h2 class="overviewHeading">Summary</h2>
+        <div class="summary-cards">
+          <a href="/faculty/allGrievances">
+            <div class="summary-card card1">
+              <span> <%= totalGrievances %></span>
+              <p>Total Grievances</p>
+            </div></a
+          >
+          <a href="/faculty/resolvedGrievance">
+            <div class="summary-card card2">
+              <span> <%= resolvedGrievances %></span>
+              <p>Resolved Grievances</p>
+            </div></a
+          >
+          <a href="/faculty/pendingGrievance">
+            <div class="summary-card card3">
+              <span><%= pendingGrievances %></span>
+              <p>Pending Grievances</p>
+            </div></a
+          >
+          <a href="/faculty/processingGrievance">
+            <div class="summary-card card4">
+              <span><%= processingGrievances %></span>
+              <p>Processing Grievances</p>
+            </div></a
+          >
+        </div>
+        <div class="griv-by-type-container">
+          <h3>Type of grievances</h3>
+          <div class="cat-types-cards">
+            <% let i =1; %> <% for(let key in allTypeCats){ %>
+            <a href="/faculty/grievanceCategory/<%= key %> ">
+              <div class="cat-type-card cat-card<%= i %>">
+                <span><%= allTypeCats[key] %> </span>
+                <p><%= key %></p>
+              </div></a
+            >
+            <% i++} %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include("partials/_footer.ejs") %>
+  </body>
+</html>

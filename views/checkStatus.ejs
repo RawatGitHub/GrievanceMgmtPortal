@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Status</title>
+    <%- include( "partials/_headerLinks.ejs" ) %>
+  </head>
+  <body>
+    <%- include( "partials/_header.ejs" ) %>
+    <div class="student-main">
+      <%- include("partials/_studentSidebar.ejs") %>
+      <section class="student-status">
+        <h1 class="gStatus">Check your grievance status</h1>
+        <form method="POST" class="statusForm">
+          <input
+            type="text"
+            placeholder="Reference No."
+            name="grievanceId"
+            required
+          />
+          <input type="submit" value="Check Status" class="statusBtn" />
+        </form>
+        <% if(typeof msg !== "undefined"){ %>
+        <div class="msg_box"><%= msg %></div>
+        <% } %> <% if(typeof locals.status !== "undefined"){ %>
+        <div class="status_box">
+          Your Grievance Status: <%= locals.status %>
+        </div>
+        <% } %>
+      </section>
+    </div>
+    <%- include("partials/_footer.ejs") %>
+  </body>
+</html>

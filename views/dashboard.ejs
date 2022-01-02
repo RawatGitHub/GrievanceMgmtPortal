@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Grievance</title>
+    <%- include("partials/_headerLinks.ejs") %>
+  </head>
+  <body>
+    <%- include("partials/_header.ejs") %>
+
+    <div class="student-main">
+      <%- include('partials/_studentSidebar.ejs') %>
+      <section class="student-sc2">
+        <div class="top">
+          <h1 class="grievanceHeading">File a grievance</h1>
+          <% if(typeof success !== "undefined") { %>
+          <span class="req-id">
+            <%= msg %> <strong><%= trackId %> </strong>
+          </span>
+          <% } %>
+        </div>
+        <hr />
+        <form method="POST" class="grievance-form">
+          <div class="student-details">
+            <input type="text" readonly value="<%= student.name %>" disabled />
+
+            <input
+              type="email"
+              readonly
+              value="<%= student.email %>"
+              disabled
+            />
+
+            <input
+              type="text"
+              readonly
+              value="<%= student.mobile %>"
+              disabled
+            />
+
+            <input
+              type="text"
+              readonly
+              value="<%= student.programme %>"
+              disabled
+            />
+          </div>
+          <div class="selects">
+            <div class="form-grp">
+              <select name="grievanceCat" onchange="getGrievanceSubject(this.value)" required>
+                <option value="">Select Grievance Category</option>
+                <% for(let i=0; i<allCategory.length; i++){ %> 
+                  <option value="<%= allCategory[i]._id %>"><%= allCategory[i].grievanceCat %> </option>
+                  <% } %> 
+              </select>
+            </div>
+            <div class="form-grp">
+              <select name="grievanceSub" id="grievanceSubjectSelect" required>
+                <option value="">Select Grievance Subject</option> 
+              </select>
+            </div>
+          </div>
+          <div class="form-grp">
+            <textarea
+              name="grievance"
+              placeholder="Type your query here.."
+              name="grievance"
+              id="query-box"
+              required
+            ></textarea>
+          </div>
+          <div class="err-b">
+            <% if(typeof error !== "undefined") { %><span
+              class="red validation-err"
+              ><%= msg %> </span
+            ><% } %>
+          </div>
+          <input type="submit" class="griev-btn" value="Submit" />
+        </form>
+      </section>
+    </div>
+    <%- include("partials/_footer.ejs") %>
+  </body>
+</html>
